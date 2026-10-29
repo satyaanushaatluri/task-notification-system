@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: task-notification-system
+  labels:
+    app: task-notification-system
+spec:
+  type: ClusterIP
+  selector:
+    app: task-notification-system
+  ports:
+    - port: 80
+      targetPort: 8000

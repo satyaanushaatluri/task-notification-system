@@ -1,18 +1,25 @@
-# Task and Notification System (Starter)
+# Task and Notification System
 
-A starter FastAPI project for creating tasks, assigning users, and sending notifications.
+FastAPI + SQLAlchemy project for tasks and notifications.
 
 ## What it does
 - Creates tasks and assigns them to a user
-- Sends a notification in the background, so the API response is not slowed down
-- Marks tasks as done
+- Sends notifications as background tasks, so API responses stay fast
+- Records notification status (`pending` / `sent` / `failed`) in the database
+- Retries a failed notification
 
 ## Run it
 ```bash
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
-Then open http://127.0.0.1:8000/docs
+Docs: http://127.0.0.1:8000/docs
 
-## Next steps
-Move notifications to Celery workers, add retry logic for failed emails, and store delivery status in PostgreSQL.
+## Tests
+```bash
+pytest
+```
+
+## Next step for production
+Move `send_notification` to Celery workers and replace the print with a real email/SMTP sender.
+
